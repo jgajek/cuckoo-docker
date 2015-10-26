@@ -18,14 +18,14 @@ USER postgres
 # Start the PostgreSQL service and create the Cuckoo database
 RUN service postgresql start &&\
  psql -c "CREATE USER sandbox PASSWORD 'cuck00!'" &&\
- psql -c "CREATE DATABASE cuckoo" &&\
+ psql -c "CREATE DATABASE cuckoo WITH TEMPLATE template0 ENCODING 'UTF-8'" &&\
  psql -c "GRANT ALL ON DATABASE cuckoo TO sandbox"
 
 # Expose the PostgreSQL TCP port
 EXPOSE 5432
 
 # Add volumes to allow persistent data storage
-VOLUME ["/var/lib/postgresql", "/var/log/postgresql", "/etc/postgresql"]
+VOLUME ["/var/lib/postgresql", "/var/log/postgresql"]
 
 # Set the default command to run when starting the container
 CMD ["/usr/lib/postgresql/9.4/bin/postgres", "-D", "/var/lib/postgresql/9.4/main", "-c", "config_file=/etc/postgresql/9.4/main/postgresql.conf"]
