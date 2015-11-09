@@ -114,18 +114,18 @@ RUN cd /opt/sandbox &&\
 # Install community modules
 RUN python /opt/sandbox/cuckoo-modified/utils/community.py -a -f
 
+# Run this portion of the build as root
+USER root
+
+# Permit capture capability for non-root users
+RUN chmod u+s `which tcpdump`
+
 # Add volumes to allow persistent data storage
 # The Cuckoo configuration (conf/ subdirectory) varies for each deployment and needs to be imported from another container
 VOLUME ["/opt/sandbox/cuckoo-modified/storage", "/var/lib/mongodb", "/var/lib/postgresql"]
 
 # Expose the Cuckoo network ports
 EXPOSE 80 2042 5432 8090
-
-# Run the default command as root
-USER root
-
-# Permit capture capability for non-root users
-RUN setcap cap_net_raw,cap_net_admin=eip `which tcpdump`
 
 # Set the entry point
 ENTRYPOINT ["/opt/sandbox/startup.sh"]
