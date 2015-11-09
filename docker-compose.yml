@@ -1,0 +1,12 @@
+esxlab:
+  image: jgajek/cuckoo:esxlab
+  container_name: esxlab
+
+cuckoo:
+  image: jgajek/cuckoo:1.3-Optiv
+  container_name: cuckoo
+  net: host
+  volumes_from:
+    - esxlab
+  cap_add:
+    - NET_ADMIN
