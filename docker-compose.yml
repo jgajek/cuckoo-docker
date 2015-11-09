@@ -1,9 +1,9 @@
 esxlab:
-  image: jgajek/cuckoo:esxlab
+  image: jgajek/cuckoo-docker:esxlab
   container_name: esxlab
 
 cuckoo:
-  image: jgajek/cuckoo:1.3-Optiv
+  image: jgajek/cuckoo-docker:1.3-Optiv
   container_name: cuckoo
   net: host
   volumes_from:

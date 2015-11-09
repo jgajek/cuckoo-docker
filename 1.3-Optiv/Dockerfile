@@ -125,7 +125,7 @@ EXPOSE 80 2042 5432 8090
 USER root
 
 # Permit capture capability for non-root users
-RUN setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+RUN setcap cap_net_raw,cap_net_admin=eip `which tcpdump`
 
 # Set the entry point
 ENTRYPOINT ["/opt/sandbox/startup.sh"]
