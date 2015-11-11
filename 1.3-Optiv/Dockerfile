@@ -73,6 +73,18 @@ RUN wget http://libvirt.org/sources/libvirt-1.2.19.tar.gz &&\
  ldconfig &&\
  rm -rf /tmp/docker/build/*
 
+# Fetch and install Tor
+RUN echo "deb http://deb.torproject.org/torproject.org vivid main" > /etc/apt/sources.list.d/torproject.list &&\
+ gpg --keyserver keys.gnupg.net --recv 886DDD89 &&\
+ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add - &&\
+ apt-get update &&\
+ apt-get install tor deb.torproject.org-keyring
+
+# Fetch and install routetor
+RUN git clone http://github.com/jgajek/routetor.git &&\
+ mkdir /opt/sandbox/routetor &&\
+ cp routetor/*tor /opt/sandbox/routetor
+
 # Replace the default PostgreSQL configuration files
 COPY postgres/pg_hba.conf       /etc/postgresql/9.4/main/pg_hba.conf
 COPY postgres/postgresql.conf   /etc/postgresql/9.4/main/postgresql.conf
