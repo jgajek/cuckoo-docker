@@ -80,11 +80,6 @@ RUN echo "deb http://deb.torproject.org/torproject.org vivid main" > /etc/apt/so
  apt-get update &&\
  apt-get install -y tor deb.torproject.org-keyring
 
-# Fetch and install routetor
-RUN git clone http://github.com/jgajek/routetor.git &&\
- mkdir /opt/sandbox/routetor &&\
- cp routetor/*tor /opt/sandbox/routetor
-
 # Replace the default PostgreSQL configuration files
 COPY postgres/pg_hba.conf       /etc/postgresql/9.4/main/pg_hba.conf
 COPY postgres/postgresql.conf   /etc/postgresql/9.4/main/postgresql.conf
@@ -125,6 +120,10 @@ RUN cd /opt/sandbox &&\
 
 # Install community modules
 RUN python /opt/sandbox/cuckoo-modified/utils/community.py -a -f
+
+# Clone routetor from Github repo
+RUN cd /opt/sandbox &&\
+ git clone http://github.com/jgajek/routetor.git
 
 # Run this portion of the build as root
 USER root
