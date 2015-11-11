@@ -137,7 +137,7 @@ RUN chmod u+s `which tcpdump`
 VOLUME ["/opt/sandbox/cuckoo-modified/storage", "/var/lib/mongodb", "/var/lib/postgresql"]
 
 # Expose the Cuckoo network ports
-EXPOSE 80 2042 5432 8090
+EXPOSE 80 2042 5353 5432 8090 9040
 
 # Set the entry point
 ENTRYPOINT ["/opt/sandbox/startup.sh"]
