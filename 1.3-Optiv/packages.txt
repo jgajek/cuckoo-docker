@@ -30,3 +30,4 @@ tcpdump
 sqlite3
 python-pysqlite2
 postgresql-9.4
+geoip-database
