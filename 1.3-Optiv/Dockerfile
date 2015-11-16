@@ -85,6 +85,11 @@ RUN add-apt-repository ppa:oisf/suricata-beta &&\
  apt-get update &&\
  apt-get install -y libhtp1 suricata
 
+# Replace the default Suricata configuration files
+COPY suricata/suricata          /etc/default/suricata
+COPY suricata/suricata.yaml     /etc/suricata/suricata.yaml
+COPY suricata/cuckoo.rules      /etc/suricata/rules/cuckoo.rules
+
 # Replace the default PostgreSQL configuration files
 COPY postgres/pg_hba.conf       /etc/postgresql/9.4/main/pg_hba.conf
 COPY postgres/postgresql.conf   /etc/postgresql/9.4/main/postgresql.conf
