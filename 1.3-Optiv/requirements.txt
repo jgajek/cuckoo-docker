@@ -17,7 +17,6 @@ maec
 django
 django-ratelimit
 distorm3
-uwsgi
 pefile
 pycrypto
 pyvmomi
