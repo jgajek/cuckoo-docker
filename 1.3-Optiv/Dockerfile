@@ -83,7 +83,7 @@ RUN echo "deb http://deb.torproject.org/torproject.org vivid main" > /etc/apt/so
 # Fetch and install Suricata
 RUN add-apt-repository ppa:oisf/suricata-beta &&\
  apt-get update &&\
- apt-get install libhtp1 suricata
+ apt-get install -y libhtp1 suricata
 
 # Replace the default PostgreSQL configuration files
 COPY postgres/pg_hba.conf       /etc/postgresql/9.4/main/pg_hba.conf
