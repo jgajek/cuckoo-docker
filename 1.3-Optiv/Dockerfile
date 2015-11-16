@@ -121,6 +121,9 @@ RUN cd /opt/sandbox &&\
 # Install community modules
 RUN python /opt/sandbox/cuckoo-modified/utils/community.py -a -f
 
+# Copy signtool.exe to the analyzer directory
+COPY signtool.exe                 /opt/sandbox/cuckoo-modified/analyzer/windows/bin/signtool.exe
+
 # Clone routetor from Github repo
 RUN cd /opt/sandbox &&\
  git clone http://github.com/jgajek/routetor.git
