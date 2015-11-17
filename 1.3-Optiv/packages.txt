@@ -27,11 +27,10 @@ libnl-3-dev
 libnl-route-3-dev
 uwsgi
 uwsgi-plugin-python
-mongodb
 nginx
 tcpdump
 sqlite3
 python-pysqlite2
-postgresql-9.4
 geoip-database
 libgeoip-dev
+p7zip-full

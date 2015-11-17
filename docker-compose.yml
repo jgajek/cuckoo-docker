@@ -2,11 +2,29 @@ esxlab:
   image: jgajek/cuckoo-docker:esxlab
   container_name: esxlab
 
+postgres:
+  image: postgres:9.4
+  container_name: postgres
+  net: host
+  environment:
+    POSTGRES_USER: cuckoo
+    POSTGRES_PASSWORD: 'cuck00!'
+
+mongo:
+  image: mongo:3.1
+  container_name: mongo
+  net: host
+
+storage:
+  image: jgajek/cuckoo-docker:storage
+  container_name: storage
+
 cuckoo:
   image: jgajek/cuckoo-docker:1.3-Optiv
   container_name: cuckoo
   net: host
   volumes_from:
     - esxlab
+    - storage
   cap_add:
     - NET_ADMIN

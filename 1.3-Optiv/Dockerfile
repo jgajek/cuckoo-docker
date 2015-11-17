@@ -90,29 +90,13 @@ COPY suricata/suricata          /etc/default/suricata
 COPY suricata/suricata.yaml     /etc/suricata/suricata.yaml
 COPY suricata/cuckoo.rules      /etc/suricata/rules/cuckoo.rules
 
-# Replace the default PostgreSQL configuration files
-COPY postgres/pg_hba.conf       /etc/postgresql/9.4/main/pg_hba.conf
-COPY postgres/postgresql.conf   /etc/postgresql/9.4/main/postgresql.conf
-
 # Replace nginx default site
 COPY nginx/nginx.conf           /etc/nginx/sites-enabled/default
-
-# Run this portion of the build as the postgres user
-USER postgres
-
-# Start the PostgreSQL service and create the Cuckoo database
-RUN service postgresql start &&\
- psql -c "CREATE USER sandbox PASSWORD 'cuck00!'" &&\
- psql -c "CREATE DATABASE cuckoo WITH TEMPLATE template0 ENCODING 'UTF-8'" &&\
- psql -c "GRANT ALL ON DATABASE cuckoo TO sandbox"
-
-# Run this portion of the build as root
-USER root
 
 # Create directory for Cuckoo
 RUN useradd sandbox &&\
  usermod -G sandbox www-data &&\
- mkdir /opt/sandbox &&\
+ mkdir -p /opt/sandbox/suricata &&\
  chown sandbox:www-data /opt/sandbox
 
 # Run this portion of the build as the sandbox user
@@ -144,12 +128,8 @@ USER root
 # Permit capture capability for non-root users
 RUN chmod u+s `which tcpdump`
 
-# Add volumes to allow persistent data storage
-# The Cuckoo configuration (conf/ subdirectory) varies for each deployment and needs to be imported from another container
-VOLUME ["/opt/sandbox/cuckoo-modified/storage", "/var/lib/mongodb", "/var/lib/postgresql"]
-
 # Expose the Cuckoo network ports
-EXPOSE 80 2042 5353 5432 8090 9040
+EXPOSE 80 2042 5353 8090 9040
 
 # Set the entry point
 ENTRYPOINT ["/opt/sandbox/startup.sh"]

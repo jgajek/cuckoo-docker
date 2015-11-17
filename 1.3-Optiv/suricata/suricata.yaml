@@ -40,13 +40,13 @@
 host-mode: auto
 
 # Run suricata as user and group.
-run-as:
-  user: sandbox
-  group: sandbox
+#run-as:
+#  user: suri
+#  group: suri
 
 # Default pid file.
 # Will use this file if no --pidfile in command options.
-#pid-file: /var/run/suricata.pid
+pid-file: /opt/sandbox/suricata/suricata.pid
 
 # Daemon working directory
 # Suricata will change directory to this one if provided
@@ -61,7 +61,7 @@ run-as:
 # The default logging directory.  Any log or output file will be
 # placed here if its not specified with a full path name.  This can be
 # overridden with the -l command line parameter.
-default-log-dir: /var/log/suricata/
+default-log-dir: /opt/sandbox/suricata/
 
 # Unix command socket can be used to pass commands to suricata.
 # An external tool can then connect to get information from suricata
@@ -893,10 +893,10 @@ logging:
   # disabled you will get the default - console output.
   outputs:
   - console:
-      enabled: yes
-  - file:
       enabled: no
-      filename: /var/log/suricata.log
+  - file:
+      enabled: yes
+      filename: /opt/sandbox/suricata/suricata.log
   - syslog:
       enabled: no
       facility: local5

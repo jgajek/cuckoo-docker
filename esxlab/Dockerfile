@@ -1,5 +1,5 @@
 #
-# Configuration data volume for Cuckoo malware sandbox
+# Configuration container for Cuckoo malware sandbox
 #
 
 FROM ubuntu:15.04
