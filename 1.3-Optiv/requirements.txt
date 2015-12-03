@@ -14,11 +14,10 @@ jsbeautifier
 lxml
 cybox
 maec
-django
-django-ratelimit
 distorm3
 pefile
 pycrypto
 pyvmomi
 flask
 geoip
+django-ratelimit

@@ -110,7 +110,7 @@ COPY startup.sh                   /opt/sandbox/startup.sh
 
 # Clone Cuckoo from Github repo
 RUN cd /opt/sandbox &&\
- git clone https://github.com/brad-accuvant/cuckoo-modified.git
+ git clone https://github.com/spender-sandbox/cuckoo-modified.git
 
 # Install community modules
 RUN python /opt/sandbox/cuckoo-modified/utils/community.py -a -f

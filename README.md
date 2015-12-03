@@ -9,7 +9,7 @@ Data container for Cuckoo storage area
 ##jgajek/cuckoo-docker:1.3-Optiv
 Cuckoo Malware Sandbox build based on:
 - Ubuntu 15.04 base OS
-- Modified Cuckoo malware sandbox from Optiv (https://github.com/brad-accuvant)
+- Modified Cuckoo malware sandbox from Optiv (https://github.com/spender-sandbox)
 - Django web UI behind nginx reverse proxy
 - vSphere machinery module
 - Tor transparent proxy
