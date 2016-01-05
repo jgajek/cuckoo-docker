@@ -35,3 +35,4 @@ p7zip-full
 python-django
 uwsgi
 uwsgi-plugin-python
+oinkmaster

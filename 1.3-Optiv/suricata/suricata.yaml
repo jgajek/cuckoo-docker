@@ -1089,8 +1089,8 @@ rule-files:
  - app-layer-events.rules  # available in suricata sources under rules dir
  - cuckoo.rules
 
-classification-file: /etc/suricata/classification.config
-reference-config-file: /etc/suricata/reference.config
+classification-file: /etc/suricata/rules/classification.config
+reference-config-file: /etc/suricata/rules/reference.config
 
 # Holds variables that would be used by the engine.
 vars:

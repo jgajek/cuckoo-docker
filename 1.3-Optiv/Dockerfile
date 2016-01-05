@@ -89,6 +89,7 @@ RUN add-apt-repository ppa:oisf/suricata-beta &&\
 COPY suricata/suricata          /etc/default/suricata
 COPY suricata/suricata.yaml     /etc/suricata/suricata.yaml
 COPY suricata/cuckoo.rules      /etc/suricata/rules/cuckoo.rules
+COPY oinkmaster/oinkmaster.conf	/etc/oinkmaster.conf
 
 # Replace nginx default site
 COPY nginx/nginx.conf           /etc/nginx/sites-enabled/default
@@ -103,10 +104,11 @@ RUN useradd sandbox &&\
 USER sandbox
 
 # Copy over configuration files
-COPY supervisor/supervisord.conf  /opt/sandbox/supervisor/supervisord.conf
-COPY uwsgi/django.ini             /opt/sandbox/uwsgi/django.ini
-COPY uwsgi/api.ini                /opt/sandbox/uwsgi/api.ini
-COPY startup.sh                   /opt/sandbox/startup.sh
+COPY supervisor/supervisord.conf  	/opt/sandbox/supervisor/supervisord.conf
+COPY supervisor/oinkmaster-event.py	/opt/sandbox/supervisor/oinkmaster-event.py
+COPY uwsgi/django.ini             	/opt/sandbox/uwsgi/django.ini
+COPY uwsgi/api.ini                	/opt/sandbox/uwsgi/api.ini
+COPY startup.sh                   	/opt/sandbox/startup.sh
 
 # Clone Cuckoo from Github repo
 RUN cd /opt/sandbox &&\
@@ -115,8 +117,9 @@ RUN cd /opt/sandbox &&\
 # Install community modules
 RUN python /opt/sandbox/cuckoo-modified/utils/community.py -a -f
 
-# Copy signtool.exe to the analyzer directory
-COPY signtool.exe                 /opt/sandbox/cuckoo-modified/analyzer/windows/bin/signtool.exe
+# Copy binaries to the analyzer directory
+COPY signtool.exe	/opt/sandbox/cuckoo-modified/analyzer/windows/bin/signtool.exe
+COPY flashplayer.exe	/opt/sandbox/cuckoo-modified/analyzer/windows/bin/flashplayer.exe
 
 # Clone routetor from Github repo
 RUN cd /opt/sandbox &&\
