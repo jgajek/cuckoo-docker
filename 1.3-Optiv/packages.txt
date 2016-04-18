@@ -27,12 +27,7 @@ libnl-3-dev
 libnl-route-3-dev
 nginx
 tcpdump
-sqlite3
-python-pysqlite2
 geoip-database
 libgeoip-dev
 p7zip-full
-python-django
-uwsgi
-uwsgi-plugin-python
 oinkmaster

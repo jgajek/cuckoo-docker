@@ -20,4 +20,6 @@ pycrypto
 pyvmomi
 flask
 geoip
-django-ratelimit
+django
+git+https://github.com/jsocol/django-ratelimit
+uwsgi
