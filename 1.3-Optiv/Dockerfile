@@ -58,21 +58,6 @@ RUN wget https://github.com/volatilityfoundation/volatility/archive/2.4.1.tar.gz
  ldconfig &&\
  rm -rf /tmp/docker/build/*
 
-# Build and install libvirt with ESX driver
-RUN wget http://libvirt.org/sources/libvirt-1.2.19.tar.gz &&\
- tar xzf libvirt-1.2.19.tar.gz &&\
- cd libvirt-1.2.19 &&\
- ./configure --with-esx &&\
- make &&\
- make install &&\
- git clone git://libvirt.org/libvirt-python.git &&\
- cd libvirt-python &&\
- git checkout -b v1.2.19 tags/v1.2.19 &&\
- python setup.py build &&\
- python setup.py install &&\
- ldconfig &&\
- rm -rf /tmp/docker/build/*
-
 # Fetch and install Tor
 RUN echo "deb http://deb.torproject.org/torproject.org vivid main" > /etc/apt/sources.list.d/torproject.list &&\
  gpg --keyserver keys.gnupg.net --recv 886DDD89 &&\
