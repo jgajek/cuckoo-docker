@@ -81,9 +81,8 @@ COPY nginx/nginx.conf           /etc/nginx/sites-enabled/default
 
 # Create directory for Cuckoo
 RUN useradd sandbox &&\
- usermod -G sandbox www-data &&\
  mkdir -p /opt/sandbox/suricata &&\
- chown sandbox:www-data /opt/sandbox
+ chown -R sandbox:sandbox /opt/sandbox
 
 # Run this portion of the build as the sandbox user
 USER sandbox
