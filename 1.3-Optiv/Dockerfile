@@ -80,12 +80,7 @@ COPY oinkmaster/oinkmaster.conf	/etc/oinkmaster.conf
 COPY nginx/nginx.conf           /etc/nginx/sites-enabled/default
 
 # Create directory for Cuckoo
-RUN useradd sandbox &&\
- mkdir -p /opt/sandbox/suricata &&\
- chown -R sandbox:sandbox /opt/sandbox
-
-# Run this portion of the build as the sandbox user
-USER sandbox
+RUN mkdir -p /opt/sandbox/suricata
 
 # Copy over configuration files
 COPY supervisor/supervisord.conf  	/opt/sandbox/supervisor/supervisord.conf
@@ -109,8 +104,9 @@ COPY flashplayer.exe	/opt/sandbox/cuckoo-modified/analyzer/windows/bin/flashplay
 RUN cd /opt/sandbox &&\
  git clone http://github.com/jgajek/routetor.git
 
-# Run this portion of the build as root
-USER root
+# Adjust directory ownership
+RUN useradd sandbox &&\
+ chown -R sandbox:sandbox /opt/sandbox
 
 # Permit capture capability for non-root users
 RUN chmod u+s `which tcpdump`
