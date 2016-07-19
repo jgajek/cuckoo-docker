@@ -2,7 +2,7 @@
 # Docker container for Cuckoo malware sandbox
 #
 
-FROM ubuntu:15.04
+FROM ubuntu:16.04
 MAINTAINER Jacob Gajek <jacob.gajek@esentire.com>
 
 WORKDIR /tmp/docker/build
@@ -59,7 +59,7 @@ RUN wget https://github.com/volatilityfoundation/volatility/archive/2.4.1.tar.gz
  rm -rf /tmp/docker/build/*
 
 # Fetch and install Tor
-RUN echo "deb http://deb.torproject.org/torproject.org vivid main" > /etc/apt/sources.list.d/torproject.list &&\
+RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/sources.list.d/torproject.list &&\
  gpg --keyserver keys.gnupg.net --recv 886DDD89 &&\
  gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add - &&\
  apt-get update &&\

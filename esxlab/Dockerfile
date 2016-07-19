@@ -2,7 +2,7 @@
 # Configuration container for Cuckoo malware sandbox
 #
 
-FROM ubuntu:15.04
+FROM ubuntu:16.04
 MAINTAINER Jacob Gajek <jacob.gajek@esentire.com>
 
 COPY cuckoo/*.conf  	/opt/sandbox/cuckoo-modified/conf/
