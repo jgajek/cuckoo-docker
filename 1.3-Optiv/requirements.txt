@@ -32,5 +32,3 @@ flask
 uwsgi
 re2
 pydeep
-yara
-distorm3

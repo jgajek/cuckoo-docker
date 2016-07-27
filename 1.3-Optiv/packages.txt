@@ -14,15 +14,8 @@ python-pip
 python-dev
 libre2-dev
 libpq-dev
+libfuzzy-dev
 libjpeg-dev
-libxml2-dev
-libxslt1-dev
-zlib1g-dev
-libdevmapper-dev
-libpciaccess-dev
-libcurl4-openssl-dev
-libjansson-dev
-libmagic-dev
 nginx
 tcpdump
 geoip-database
@@ -30,5 +23,4 @@ libgeoip-dev
 p7zip-full
 oinkmaster
 ssdeep
-yara
 volatility
