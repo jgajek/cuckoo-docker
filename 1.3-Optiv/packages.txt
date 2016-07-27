@@ -31,3 +31,5 @@ geoip-database
 libgeoip-dev
 p7zip-full
 oinkmaster
+ssdeep
+yara

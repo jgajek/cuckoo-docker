@@ -31,3 +31,6 @@ pyvmomi
 flask
 uwsgi
 re2
+pydeep
+yara
+volatility

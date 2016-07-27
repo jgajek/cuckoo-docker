@@ -20,44 +20,6 @@ RUN apt-get update &&\
 RUN pip install -r /tmp/requirements.txt &&\
  rm /tmp/requirements.txt
 
-# Build and install yara
-RUN wget https://github.com/plusvic/yara/archive/v3.4.0.tar.gz &&\
- tar xzf v3.4.0.tar.gz &&\
- cd yara-3.4.0 &&\
- ./bootstrap.sh &&\
- ./configure --with-crypto --enable-cuckoo --enable-magic &&\
- make &&\
- make install &&\
- cd yara-python &&\
- python setup.py build &&\
- python setup.py install &&\
- ldconfig &&\
- rm -rf /tmp/docker/build/*
-
-# Build and install ssdeep
-RUN wget http://downloads.sourceforge.net/project/ssdeep/ssdeep-2.13/ssdeep-2.13.tar.gz &&\
- tar xzf ssdeep-2.13.tar.gz &&\
- cd ssdeep-2.13 &&\
- ./bootstrap &&\
- ./configure &&\
- make &&\
- make install &&\
- git clone https://github.com/kbandla/pydeep.git &&\
- cd pydeep &&\
- python setup.py build &&\
- python setup.py install &&\
- ldconfig &&\
- rm -rf /tmp/docker/build/*
-
-# Build and install volatility
-RUN wget https://github.com/volatilityfoundation/volatility/archive/2.4.1.tar.gz &&\
- tar xzf 2.4.1.tar.gz &&\
- cd volatility-2.4.1 &&\
- python setup.py build &&\
- python setup.py install &&\
- ldconfig &&\
- rm -rf /tmp/docker/build/*
-
 # Fetch and install Tor
 RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/sources.list.d/torproject.list &&\
  gpg --keyserver keys.gnupg.net --recv 886DDD89 &&\
@@ -68,7 +30,7 @@ RUN echo "deb http://deb.torproject.org/torproject.org xenial main" > /etc/apt/s
 # Fetch and install Suricata
 RUN add-apt-repository ppa:oisf/suricata-beta &&\
  apt-get update &&\
- apt-get install -y libhtp1 suricata
+ apt-get install -y suricata
 
 # Replace the default Suricata configuration files
 COPY suricata/suricata          /etc/default/suricata
