@@ -12,6 +12,7 @@ openssl
 supervisor
 python-pip
 python-dev
+libre2-dev
 libpq-dev
 libjpeg-dev
 libxml2-dev
