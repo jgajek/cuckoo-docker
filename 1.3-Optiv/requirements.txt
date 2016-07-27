@@ -33,4 +33,4 @@ uwsgi
 re2
 pydeep
 yara
-volatility
+distorm3

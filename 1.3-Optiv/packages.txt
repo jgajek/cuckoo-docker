@@ -23,8 +23,6 @@ libpciaccess-dev
 libcurl4-openssl-dev
 libjansson-dev
 libmagic-dev
-libnl-3-dev
-libnl-route-3-dev
 nginx
 tcpdump
 geoip-database
@@ -33,3 +31,4 @@ p7zip-full
 oinkmaster
 ssdeep
 yara
+volatility
