@@ -32,3 +32,5 @@ flask
 uwsgi
 re2
 pydeep
+m2crypto
+pype32

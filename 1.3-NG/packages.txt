@@ -24,3 +24,6 @@ p7zip-full
 oinkmaster
 ssdeep
 volatility
+clamav
+clamav-daemon
+clamav-freshclam

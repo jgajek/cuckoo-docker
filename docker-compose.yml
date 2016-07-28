@@ -20,7 +20,7 @@ storage:
   container_name: storage
 
 cuckoo:
-  image: jgajek/cuckoo-docker:1.3-Optiv
+  image: jgajek/cuckoo-docker:1.3-NG
   container_name: cuckoo
   net: host
   volumes_from:

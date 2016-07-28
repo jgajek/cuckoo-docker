@@ -6,7 +6,7 @@ Container holding Cuckoo configuration for vSphere-hosted malware lab
 ##jgajek/cuckoo-docker:storage
 Data container for Cuckoo storage area
 
-##jgajek/cuckoo-docker:1.3-Optiv
+##jgajek/cuckoo-docker:1.3-NG
 Cuckoo Malware Sandbox build based on:
 - Ubuntu 16.04 base OS
 - Modified Cuckoo malware sandbox from Spender (https://github.com/spender-sandbox)
